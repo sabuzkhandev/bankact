@@ -11,7 +11,7 @@ document.getElementById('btn-submit').addEventListener('click',function(){
     if(getEmailValue === email && getPassValue == pass){
         location.href = 'bank-acc.html'
     }else{
-        alert('Invalid email or password!!')
+        alert('Empty/Invalid email or password!!')
     }
     
 })
