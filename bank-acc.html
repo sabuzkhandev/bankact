@@ -62,6 +62,12 @@
             const getInputDeposit = document.getElementById('deposit')
             const getAmtValue = getInputDeposit.value
             const getAmtValueFloat = parseFloat(getAmtValue)
+
+            getInputDeposit.value = ''
+            if(isNaN(getAmtValueFloat)){
+                alert('Invalid number')
+                return;
+            }
             
             const setDepositAmt = document.getElementById('deposit-amt')
             const setDepositTotal = setDepositAmt.innerText
@@ -78,7 +84,7 @@
             const withdrawAndBalance = getBalanceValueFloat + getAmtValueFloat
             getBalance.innerText = withdrawAndBalance
 
-            getInputDeposit.value = ''
+            
             
         })
 
@@ -87,7 +93,12 @@
             const getInputwithdraw = document.getElementById('withdraw')
             const getwithdrawValue = getInputwithdraw.value
             const getwithdrawValueFloat = parseFloat(getwithdrawValue)
-            
+
+            getInputwithdraw.value = ''
+            if (isNaN(getwithdrawValueFloat)) {
+                alert('invalid number')
+                return;
+            }
             const setWithdraw = document.getElementById('withdraw-amt')
             const setWithdrawTotal = setWithdraw.innerText
             const setWithdrawTotalfloat = parseFloat(setWithdrawTotal)
@@ -99,10 +110,10 @@
             const withWithdrawBalance = document.getElementById('balance')
             const setWithWithdrawBalance = withWithdrawBalance.innerText
             const setWithWithdrawBalanceFloat = parseFloat(setWithWithdrawBalance)
-
+            
             const setTotalWithdrawBalance = setWithWithdrawBalanceFloat - getwithdrawValueFloat
             withWithdrawBalance.innerText = setTotalWithdrawBalance
-            getInputwithdraw.value = ''
+            
         })
     </script>
 </body>
