@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <h1 class="text-center mt-5 mb-5 font-semibold text-2xl text-red-700">Manage Personal Account</h1><hr>
+    </header>
+    <main>
+        <section class="w-9/12 mx-auto mt-3">
+            <div class="container">
+                <div class="row">
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="bg-orange-300 p-5 rounded-[10px]">
+                            <h1 class="font-semibold">Deposit</h1>
+                            <h1 class="mt-2 text-3xl">Tk.<span id="deposit-amt">00</span></h1>
+                        </div>
+                        <div class="bg-rose-300 p-5 rounded-[10px]">
+                            <h1 class="font-semibold">Withdraw</h1>
+                            <h1 class="mt-2 text-3xl">TK.<span id="withdraw-amt">00</span></h1>
+                        </div>
+                        <div class="bg-amber-300 p-5 rounded-[10px]">
+                            <h1 class="font-semibold">Total Balance</h1>
+                            <h1 class="mt-2 text-3xl">Tk.<span id="balance">1230</span></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="grid grid-cols-2 gap-3 mt-5">
+                        <div class="bg-emerald-300 p-8 rounded-[10px]">
+                            <h1 class="font-semibold">Deposit Amount</h1>
+                            <input id="deposit" class="w-9/12 block mt-3 mb-2 px-2 py-1 rounded-[5px]" type="text" placeholder="Deposit amount">
+                            <button id="deposit-btn" class="bg-yellow-600 px-5 hover:bg-orange-700 py-1 text-stone-50 rounded-[5px]">Deposit</button>
+                        </div>
+                        <div class="bg-sky-300 p-8 rounded-[10px]">
+                            <h1 class="font-semibold">Withdraw Amount</h1>
+                            <input id="withdraw" class="w-9/12 block mt-3 mb-2 px-2 py-1 rounded-[5px]" type="text"  placeholder="Withdraw amount">
+                            <button id="withdraw-btn" class="bg-yellow-600 hover:bg-orange-700 px-5 py-1 text-stone-50 rounded-[5px]">Withdraw</button>
+                        </div>
+                    </div>
+                </div><hr class="mt-3">
+                <div class="flex grid justify-items-center"><button id="logout" class="bg-green-500 hover:bg-green-700 px-5 py-1 mt-3 text-stone-50 rounded-[5px]">Logout</button></div>
+                <hr class="mt-3">
+            </div>
+        </section>
+        <footer>
+            <p class="pt-2 w-9/12 mx-auto text-slate-400 text-xs">© 2022 Online Banking</p>
+        </footer>
+    </main>
+
+    <script>
+        document.getElementById('logout').addEventListener('click',function(){
+           location.href = 'index.html'
+        })
+        //deposit part start
+        document.getElementById('deposit-btn').addEventListener('click',function(){
+            const getInputDeposit = document.getElementById('deposit')
+            const getAmtValue = getInputDeposit.value
+            const getAmtValueFloat = parseFloat(getAmtValue)
+            
+            const setDepositAmt = document.getElementById('deposit-amt')
+            const setDepositTotal = setDepositAmt.innerText
+            const setDepositTotalFloat = parseFloat(setDepositTotal)
+
+            const totalDepositAmtValue = getAmtValueFloat + setDepositTotalFloat;
+
+            setDepositAmt.innerText = totalDepositAmtValue
+
+            const getBalance = document.getElementById('balance')
+            const getBalanceValue = getBalance.innerText
+            const getBalanceValueFloat = parseFloat(getBalanceValue)
+
+            const withdrawAndBalance = getBalanceValueFloat + getAmtValueFloat
+            getBalance.innerText = withdrawAndBalance
+
+            getInputDeposit.value = ''
+            
+        })
+
+        //withdrow part start
+        document.getElementById('withdraw-btn').addEventListener('click',function(){
+            const getInputwithdraw = document.getElementById('withdraw')
+            const getwithdrawValue = getInputwithdraw.value
+            const getwithdrawValueFloat = parseFloat(getwithdrawValue)
+            
+            const setWithdraw = document.getElementById('withdraw-amt')
+            const setWithdrawTotal = setWithdraw.innerText
+            const setWithdrawTotalfloat = parseFloat(setWithdrawTotal)
+
+            const withdrawAmt = getwithdrawValueFloat + setWithdrawTotalfloat
+
+            setWithdraw.innerText = withdrawAmt
+
+            const withWithdrawBalance = document.getElementById('balance')
+            const setWithWithdrawBalance = withWithdrawBalance.innerText
+            const setWithWithdrawBalanceFloat = parseFloat(setWithWithdrawBalance)
+
+            const setTotalWithdrawBalance = setWithWithdrawBalanceFloat - getwithdrawValueFloat
+            withWithdrawBalance.innerText = setTotalWithdrawBalance
+            getInputwithdraw.value = ''
+        })
+    </script>
+</body>
+</html>
